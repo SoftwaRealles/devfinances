@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Responsive -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+		<link rel="shortcut icon" href="./img/favicon.png?v=2" type="image/x-icon"/>
+    <!--/ Responsive -->
+
+    <!-- SEO -->
+    <meta name="description" content="DevFinances é uma aplicação web que permite organizar orçamento financeiro, podendo adicionar renda e despesas. Coder by SoftwaRealles"/>
+    <meta name="author" content="Diogo Realles, SoftwaRealles"/>
+    <link rel="canonical" href="https://devfinances.surge.sh/"/>
+    <meta name="robots" content="index, follow"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com"/>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet"/>
+    <!--/ SEO -->
+    
+    <!-- Facebook -->
+    <meta property="og:url" content="https://devfinances.surge.sh/"/>
+    <meta property="og:title" content="DevFinances"/>
+    <meta property="og:description" content="DevFinances é uma aplicação web que permite organizar orçamento financeiro, podendo adicionar renda e despesas. Coder by SoftwaRealles"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://devfinances.surge.sh/img/solution-pc.png"/>
+    <meta property="og:image:type" content="image/png"/>
+    <meta property="og:image:width" content="1000"/>
+    <meta property="og:image:height" content="500"/>
+    <!--/ Facebook -->
+
+    <title>DevFinances</title>
+  </head>
+
+  <body>
+
+		<header class="header">
+			<a href="./">
+				<img src="./img/logo.svg" alt="Logo dev.finance$"/>
+			</a>
+		</header>
+
+		<main class="container">
+			<section class="balance">
+				<h2 class="sr-only">Balanço</h2>
+				
+				<div class="card">
+					<h3 class="card__h3">
+						<span class="card__title">Entradas</span>
+						<img src="./img/income.svg" alt="Ícone de entrada">
+					</h3>
+					<p class="card__value" id="incomeDisplay">R$ 0,00</p>
+				</div>
+
+				<div class="card">
+					<h3 class="card__h3">
+						<span class="card__title">Saídas</span>
+						<img src="./img/expense.svg" alt="Ícone de saída">
+					</h3>
+					<p class="card__value" id="expenseDisplay">R$ 0,00</p>
+				</div>
+
+				<div class="card total">
+					<h3 class="card__h3">
+						<span class="card__title">Total</span>
+						<img src="./img/total.svg" alt="Ícone de total">
+					</h3>
+					<p class="card__value" id="totalDisplay">R$ 0,00</p>
+				</div>
+			</section>
+
+			<section class="transaction">
+				<h2 class="sr-only">Transações</h2>
+
+				<a id="btnPlus" href="#" class="btn new">+ Nova Transação</a>
+
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th>Descrição</th>
+							<th>Valor</th>
+							<th>Data</th>
+							<th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+					</tbody>
+				</table>
+			</section>
+		</main>
+
+		<div class="modal-overlay">
+			<div class="modal">
+				<div class="form">
+					<h2 class="form__title">Nova Transação</h2>
+					<form action="" method="POST" onsubmit="Form.submit(event)">
+						<div class="input-group">
+							<label class="sr-only" for="txtDescription">Descrição</label>
+							<input id="txtDescription" type="text" name="txtDescription" placeholder="Descrição"/>
+						</div>
+
+						<div class="input-group">
+							<label class="sr-only" for="txtAmount">Valor</label>
+							<input id="txtAmount" type="text" step="0.01" name="txtAmount" placeholder="0,00"/>
+							<small class="help">Use o sinal - (negativo) para despesas e . (ponto) para casas decimais.</small>
+						</div>
+
+						<div class="input-group">
+							<label class="sr-only" for="txtDate">Data</label>
+							<input id="txtDate" type="date" name="txtDate" placeholder="dd/mm/aaaa/">
+						</div>
+
+						<div class="input-group actions">
+							<a id="btnCancel" class="btn cancel" href="#">Cancelar</a>
+							<button id="btnSave" class="btn btnSave">Salvar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<p><span class="details">SoftwaRealles</span> - <span id="dateFooter">0000</span></p>
+		</footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

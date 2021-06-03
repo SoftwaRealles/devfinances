@@ -1,0 +1,251 @@
+@import '_resets';
+@import '_variables';
+@import '_functions';
+
+::selection{
+	color: $white;
+	background: $black;
+}
+
+html{
+  font-size: em(16);
+}
+body{
+	background: $bgBody;
+	font-family: 'Poppins', sans-serif;
+}
+.container{
+	width: min(90vw, 800px);
+	margin: 0 auto;
+}
+h2{
+	margin-top: 3.2rem;
+	margin-bottom: .8rem;
+	color: $dark-blue;
+}
+button{
+	width: 100%;
+	height: 50px;
+	border: none;
+	color: $white;
+	background: $total;
+	padding: 0;
+	border-radius: .25rem;
+	cursor: pointer;
+	opacity: .7;
+}
+button:hover{
+	opacity: 1;
+}
+.btn.cancel{
+	color: $expense;
+	background: transparent;
+	border: 2px solid $expense;
+	border-radius: .25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	cursor: pointer;
+	opacity: .7;
+	text-decoration: none;
+}
+.btn.cancel:hover{
+	opacity: 1;
+}
+.header{
+	background: $bgHeader;
+	padding: 2rem 0 10rem;
+	text-align: center;
+}
+.balance{
+	margin-top: -8rem;
+}
+.sr-only{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+.card{
+	background: $white;
+	padding: 1.5rem 2rem;
+	border-radius: .25rem;
+	margin-bottom: 2rem;
+	color: $dark-blue;
+	&__h3{
+		font-weight: 400;
+		font-size: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__value{
+		font-size: 2rem;
+		line-height: 3rem;
+		margin-top: 1rem;
+	}
+	&.total{
+		background: $total;
+		color: $white;
+	}
+}
+
+.btn.new{
+	display: inline-block;
+	margin-bottom: .8rem;
+	color: $total;
+	text-decoration: none;
+	opacity: .8;
+}
+.btn.new:hover{
+	opacity: 1;
+}
+.transaction{
+	width: 100%;
+	display: block;
+}
+.data-table{
+	width: 100%;
+	border-spacing: 0 .5rem;
+	color: $colorTD;
+	thead th{
+		background: $white;
+		font-weight: 400;
+		padding: 1rem 2rem;
+		text-align: left;
+	}
+	thead tr th:first-child,
+	.data-table tbody tr td:first-child{
+		border-radius: 5px 0 0 5px;
+	}
+	thead tr th:last-child,
+	.data-table tbody tr td:last-child{
+		border-radius: 0 5px 5px 0;
+	}
+	tbody td{
+		background: $white;
+		padding: 1rem 2rem;
+		font-weight: 400;
+	}
+	tbody tr{
+		opacity: .6;
+	}
+	tbody tr:hover{
+		opacity: 1;
+	}
+	td.description{
+		color: $dark-blue;
+	}
+	td.income{
+		color: $income;
+	}
+	td.expense{
+		color: $expense;
+	}
+}
+.modal-overlay{
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .4s ease-in-out;
+}
+.modal-overlay.active{
+	opacity: 1;
+	visibility: visible;
+}
+.modal{
+	background: $bgBody;
+	padding: 2.4rem;
+}
+.form{
+	width: 500px;
+	&__title{
+		margin-top: 0;
+	}
+}
+.form form input{
+	border: none;
+	border-radius: .25rem;
+	padding: .8rem;
+	width: 100%;
+}
+.form .input-group{
+	margin-top: .8rem;
+}
+.form .input-group .help{
+	opacity: .4;
+}
+.form .input-group.actions{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.form .input-group.actions .btn,
+.form .input-group.actions button{
+	width: 48%;
+}
+footer{
+	text-align: center;
+	padding: 4rem 0 2rem;
+	color: $dark-blue;
+	opacity: .6;
+	position: relative;
+	z-index: -1;
+}
+footer .details{
+	font-weight: bold;
+}
+
+/* responsive */
+@media screen and (min-width: 800px){
+	html{
+		font-size: 87.5%;
+	}
+	.balance{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+	}
+}
+
+@media screen and (max-width: 577px){
+	.data-table thead{
+		display: none;
+	}
+	.data-table, .data-table tbody,.data-table tr, .data-table td{
+		display: block;
+		width: 100%;
+	}
+	.data-table tr{
+		margin-bottom: 1em;
+	}
+	.data-table tbody tr td{
+		text-align: right;
+		padding-left: 50%;
+		position: relative;
+	}
+	.data-table td:before{
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 50%;
+		padding-left: .9em;
+		font-weight: bold;
+		font-size: .85em;
+		text-align: left;
+	}
+}
